@@ -7,15 +7,42 @@ VADAS stands on the shoulders of the following giants:
 - [CMU Sphinx](http://cmusphinx.sourceforge.net)
 - [Node Webkit (nwjs)](http://nwjs.io)
 
+## Dependencies/Prerequisites
+
+### CMU Sphinx
+Install [CMU Sphinx](http://cmusphinx.sourceforge.net), which requires:
+- [sphinx-base](https://github.com/cmusphinx/sphinxbase)
+- [pocketsphinx](https://github.com/cmusphinx/pocketsphinx)
+
+### CMUCLMTK (Language Model toolkit)
+1. Download [cmuclmtk](http://cmusphinx.sourceforge.net/wiki/download)
+2. Build local non-sudo version of cmuclmtk
+```bash
+cd /path/to/unzipped/cmuclmtk
+./configure --prefix=/absolute/path/to/unzipped/cmuclmtk/build
+make install
+```
+3. Edit your shell config, and put the local builds on your `$PATH` (and the .libs folder on your `$LD_LIBRARY_PATH`)
+```bash
+export CMUCLMTK_BIN="/path/to/cmuclmtk/build/bin"
+export CMUCLMTK_LIBS="/path/to/cmuclmtk/src/.libs"
+export $PATH=$CMUCLMTK_BIN:$PATH
+export $LD_LIBRARY_PATH=$CMUCLMTK_LIBS:$LD_LIBRARY_PATH
+```
+
+This is necessary because it will allow you to use the build libraries and programs WITHOUT sudo.
+After running these commands, you should have programs like `text2wfreq` available in a new shell (or after sourcing the modified shell config file)
+
+### Node-Webkit
+Install [node-webkit](http://nwjs.io) (AKA nwjs) **(preferrably 0.8.6 64bit)**
+
+3. `npm install -g nw-gyp` ([nw-gyp](https://github.com/nwjs/nw-gyp))
+
 ## Getting started
 
 To set up VADAS:
-1. Install CMU Sphinx, which requires:
- - [sphinx-base](https://github.com/cmusphinx/sphinxbase)
- - [pocketsphinx](https://github.com/cmusphinx/pocketsphinx)
-2. Install node-webkit (nwjs) **(preferrably 0.8.6 64bit)**
-3. `npm install -g nw-gyp` ([nw-gyp](https://github.com/nwjs/nw-gyp))
-4. `npm install`
+1. Download a suitable acoustic language model (ex. http://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/US%20English%20Generic%20Acoustic%20Model/cmusphinx-en-us-ptm-5.2.tar.gz/download) and save it under "resources/hmm" (from the vadas top level directory)
+2. `npm install`
 
 To run VADAS:
 `nw .`
