@@ -17,11 +17,13 @@ To set up VADAS:
 
 ### Common Issuses
 
-*Unable to find libudev.so.0* while trying to install nwjs
+**Unable to find libudev.so.0** while trying to install nwjs
 If this error pops up, usually you can check the [Google Chrome](http://chrome.google.com) shared libraries to find a version that you can use. To link to the version you'd like, you can modify your `LD_LIBRARY_PATH` (temporarily or in your shell config file) to include the shared libraries packed with Chrome, often found in `/opt/google/chrome`
 
 For bash, this looks something like:
-    # Add google chrome's shared libs to load path
-    export CHROME_LIBS="/opt/google/chrome"
-    export LD_LIBRARY_PATH=$CHROME_LIBS:$LD_LIBRARY_PATH
+```bash
+# Add google chrome's shared libs to load path
+export CHROME_LIBS="/opt/google/chrome"
+export LD_LIBRARY_PATH=$CHROME_LIBS:$LD_LIBRARY_PATH
+```
 
