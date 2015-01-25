@@ -1,5 +1,7 @@
 {
   "name": "vadas",
-  "main": "app.html"
+  "main": "app.html",
+  "dependencies": {
+    "pocketsphinx": "git+ssh://git@github.com:t3hmrman/node-pocketsphinx.git"
+  }
 }
-  

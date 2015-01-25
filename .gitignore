@@ -4,3 +4,4 @@
 
 # Bower
 public/vendor
+/node_modules/
