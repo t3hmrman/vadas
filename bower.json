@@ -1,0 +1,24 @@
+{
+  "name": "vadas",
+  "version": "0.0.0",
+  "homepage": "https://github.com/t3hmrman/vadas",
+  "authors": [
+    "t3hmrman <t3hmrman@gmail.com>"
+  ],
+  "description": "An extensible system for voice activated automation",
+  "main": "app.html",
+  "keywords": [
+    "automation",
+    "distributed",
+    "voice",
+    "cmu",
+    "sphinx",
+    "nwjs"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "react-router": "~0.11.6",
+    "pure": "~0.5.0"
+  }
+}
