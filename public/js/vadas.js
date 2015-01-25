@@ -1,0 +1,1 @@
+/* Frontend JS for VADAS */
