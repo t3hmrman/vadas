@@ -2,7 +2,13 @@
 *~
 \#*
 
+# Sphinx related build artifacts
+resources/dist
+resources/acoustic_model
+
 # Bower
 public/vendor
 /node_modules/
 /vendor/
+
+
