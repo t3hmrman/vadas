@@ -80,4 +80,10 @@ tldr; You need spaces after `<s>` and `</s>` in the reference text (`resources/l
 
 ### Failed to open audio device /dev/dsp
 [On the CMUSphinx FAQ](http://cmusphinx.sourceforge.net/wiki/faq#qfailed_to_open_audio_device_dev_dsp_no_such_file_or_directory)
-For linux users that don't have a /dev/dsp directory:
+
+Note that `sudo apt-get install oss-compat` will fail because the needed ALSA compatability modules will fail [Full explanation on SO](http://askubuntu.com/questions/318396/oss-compat-package-does-not-create-dev-dsp), unless you compiled them into the kernel.
+
+You could download and install osspd, but rather than that, just recompile pocketsphinx with ALSA support (since OSS is deprecated):
+- `sudo apt-get install libasound2 libasound2-dev`
+- Recompile sphinxbase (it will use ALSA automagically)
+- Recompile pocketsphinx (it will use ALSA automagically)
