@@ -36,7 +36,9 @@ After running these commands, you should have programs like `text2wfreq` availab
 ### Node-Webkit
 Install [node-webkit](http://nwjs.io) (AKA nwjs) **(preferrably 0.8.6 64bit)**
 
-3. `npm install -g nw-gyp` ([nw-gyp](https://github.com/nwjs/nw-gyp))
+### nw-gyp
+nw-gyp stands in for node-gyp
+`npm install -g nw-gyp` ([nw-gyp](https://github.com/nwjs/nw-gyp))
 
 ## Getting started
 
