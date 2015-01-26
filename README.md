@@ -48,6 +48,24 @@ To set up VADAS:
 To run VADAS:
 `nw .`
 
+## Configuration
+
+### Finding/using a non-default USB microphone
+
+1. `aplay -l` or `cat /proc/asound/cards` (to find the hardware device number and subdevice)
+2. `pocketsphinx_continuous -inmic yes -adcdev hw:<hardward device number>:<subdevice>` (test with pocketsphinx, in this example we will use `hw:1,0`)
+3. Add the following config to your VADAS config.json file:
+```json
+{ "overrides": {
+    "pocketsphinx": {
+        "switches": {
+            "adcdev": "hw:1,0"
+            }
+        }
+    }
+}
+```
+
 ## Common Issuses
 
 ### Unable to find libudev.so.0 while trying to install nwjs
