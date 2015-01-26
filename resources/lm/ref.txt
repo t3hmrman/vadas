@@ -1,2 +1,3 @@
-<s>Good morning</s>
-<s>Good morning vadas</s>
+<s> Good morning </s>
+<s> Good morning vadas </s>
+
