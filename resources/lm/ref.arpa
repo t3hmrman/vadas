@@ -1,0 +1,69 @@
+#############################################################################
+## Copyright (c) 1996, Carnegie Mellon University, Cambridge University,
+## Ronald Rosenfeld and Philip Clarkson
+## Version 3, Copyright (c) 2006, Carnegie Mellon University 
+## Contributors includes Wen Xu, Ananlada Chotimongkol, 
+## David Huggins-Daines, Arthur Chan and Alan Black 
+#############################################################################
+=============================================================================
+===============  This file was produced by the CMU-Cambridge  ===============
+===============     Statistical Language Modeling Toolkit     ===============
+=============================================================================
+This is a 3-gram language model, based on a vocabulary of 4 words,
+  which begins "<s>Good", "morning", "morning</s>"...
+This is a CLOSED-vocabulary model
+  (OOVs eliminated from training data and are forbidden in test data)
+Good-Turing discounting was applied.
+1-gram frequency of frequency : 2 
+2-gram frequency of frequency : 2 0 0 0 0 0 0 
+3-gram frequency of frequency : 2 0 0 0 0 0 0 
+1-gram discounting ratios : 0.50 
+2-gram discounting ratios : 
+3-gram discounting ratios : 
+This file is in the ARPA-standard format introduced by Doug Paul.
+
+p(wd3|wd1,wd2)= if(trigram exists)           p_3(wd1,wd2,wd3)
+                else if(bigram w1,w2 exists) bo_wt_2(w1,w2)*p(wd3|wd2)
+                else                         p(wd3|w2)
+
+p(wd2|wd1)= if(bigram exists) p_2(wd1,wd2)
+            else              bo_wt_1(wd1)*p_1(wd2)
+
+All probs and back-off weights (bo_wt) are given in log10 form.
+
+Data formats:
+
+Beginning of data mark: \data\
+ngram 1=nr            # number of 1-grams
+ngram 2=nr            # number of 2-grams
+ngram 3=nr            # number of 3-grams
+
+\1-grams:
+p_1     wd_1 bo_wt_1
+\2-grams:
+p_2     wd_1 wd_2 bo_wt_2
+\3-grams:
+p_3     wd_1 wd_2 wd_3 
+
+end of data mark: \end\
+
+\data\
+ngram 1=4
+ngram 2=2
+ngram 3=2
+
+\1-grams:
+-0.6021 <s>Good	-0.3522
+-0.6021 morning	-0.3522
+-0.6021 morning</s>	0.0000
+-0.6021 vadas</s>	0.0000
+
+\2-grams:
+-0.1761 <s>Good morning 0.1761
+-0.1761 morning morning</s> -0.1761
+
+\3-grams:
+-0.3010 <s>Good morning morning</s> 
+-0.3010 morning morning</s> vadas</s> 
+
+\end\
