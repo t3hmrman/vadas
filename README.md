@@ -105,3 +105,22 @@ You could download and install osspd, but rather than that, just recompile pocke
 - `sudo apt-get install libasound2 libasound2-dev`
 - Recompile sphinxbase (it will use ALSA automagically)
 - Recompile pocketsphinx (it will use ALSA automagically)
+
+### /PocketSphinx.node: undefined symbol: xxxxx
+
+If this comes up while developing, it's most likely an indication of missing headers in the part that is being built by nw-gyp (the native cmusphinx bit). The [forked node-pocketsphinx repository](https://github.com/t3hmrman/node-pocketsphinx/) received a fix for this @ revisions c27eb57 and a2b8942.
+
+The fix (at the time) was to explicitly add (unfortunately, hard-code) the include locations of sphinxbase and pocketsphinx in the binding.gyp configuration file. The summed up, look like this:
+
+    ... (rest of binding.gyp) ...
+    "include_dirs": [
+      "/usr/local/include/sphinxbase",
+      "/usr/local/include/pocketsphinx",
+      "/usr/local/include"
+      ],
+    "libraries": [
+      "-lsphinxbase",
+      "-lpocketsphinx"
+      ]
+    ... (rest of binding.gyp) ...
+      
