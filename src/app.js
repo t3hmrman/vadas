@@ -1,13 +1,29 @@
 /* Source code for VADAS node-webkit app */
-
 /* global require */
+/* global process */
 
 var PocketSphinx = require('pocketsphinx');
-var ps = new PocketSphinx();
 
-// Register listener on utterances
-ps.on('utterance', function(hyp, utt, score) {
-  console.log("Received utterance!");
+// Global constants
+var SAMPLING_RATE = 16000;
+var NFFT = 512;
+var HMM_PATH = 'resources/acoustic_model';
+var LM_PATH = 'resources/dist/lm.DMP';
+var DICT_PATH = 'resources/dict/cmudict_SPHINX_40';
+
+// PocketSphinx setup
+var ps = new PocketSphinx({
+  hmm: HMM_PATH,
+  lm: LM_PATH,
+  dict: DICT_PATH,
+  samprate: SAMPLING_RATE,
+  nfft: NFFT
+}, function(err, hypothesis, score, utterance_id) {
+  if (err) { console.log("Error occurred:", err); return;}
+  console.log("Got reading!");
+  console.log("hypothesis:", hypothesis);
+  console.log("score:", score);
+  console.log("utterance_id:", utterance_id);
 });
 
 // Set up media user stream
