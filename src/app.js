@@ -7,15 +7,21 @@ var PocketSphinx = require('pocketsphinx');
 // Global constants
 var SAMPLING_RATE = 16000;
 var NFFT = 512;
-var HMM_PATH = 'resources/acoustic_model';
-var LM_PATH = 'resources/dist/lm.DMP';
-var DICT_PATH = 'resources/dict/cmudict_SPHINX_40';
+var CONFIG = {
+  custom: { hmm: 'resources/acoustic_model',
+            lm: 'resources/dist/ref.lm.DMP',
+            dict: 'resources/dict/cmudict_SPHINX_40'},
+  generated: { hmm: 'resources/acoustic_model',
+               lm: 'resources/pre_packaged/1172/1172.lm',
+               dict: 'resources/pre_packaged/1172/1172.dic'}
+};
+            
 
 // PocketSphinx setup
 var ps = new PocketSphinx({
-  hmm: HMM_PATH,
-  lm: LM_PATH,
-  dict: DICT_PATH,
+  hmm: CONFIG.generated.hmm,
+  lm: CONFIG.generated.lm,
+  dict: CONFIG.generated.dict,
   samprate: SAMPLING_RATE,
   nfft: NFFT
 }, function(err, hypothesis, score, utterance_id) {

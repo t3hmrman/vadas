@@ -1,0 +1,41 @@
+Language model created by QuickLM on Wed Jan 28 01:36:32 EST 2015
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 3 sentences and 6 words
+
+\data\
+ngram 1=6
+ngram 2=7
+ngram 3=5
+
+\1-grams:
+-0.9031 </s> -0.3010
+-0.9031 <s> -0.2430
+-1.0792 GOOD -0.2632
+-1.3802 HELLO -0.2430
+-1.0792 MORNING -0.2218
+-1.3802 VADAS -0.2430
+
+\2-grams:
+-0.4771 <s> GOOD 0.0000
+-0.7782 <s> HELLO 0.0000
+-0.3010 GOOD MORNING 0.0000
+-0.3010 HELLO </s> -0.3010
+-0.6021 MORNING </s> -0.3010
+-0.6021 MORNING VADAS 0.0000
+-0.3010 VADAS </s> -0.3010
+
+\3-grams:
+-0.3010 <s> GOOD MORNING
+-0.3010 <s> HELLO </s>
+-0.6021 GOOD MORNING </s>
+-0.6021 GOOD MORNING VADAS
+-0.3010 MORNING VADAS </s>
+
+\end\
