@@ -15,7 +15,6 @@ var CONFIG = {
                lm: 'resources/pre_packaged/1172/1172.lm',
                dict: 'resources/pre_packaged/1172/1172.dic'}
 };
-            
 
 // PocketSphinx setup
 var ps = new PocketSphinx({
@@ -33,16 +32,38 @@ var ps = new PocketSphinx({
 });
 
 // Set up media user stream
-if (navigator.getUserMedia) {
-  navigator.getUserMedia(
+if (navigator.webkitGetUserMedia) {
+  navigator.webkitGetUserMedia(
     {video: false, audio: true},
     function(localMediaStream) {
       console.log("Got media stream:", localMediaStream);
     },
     function(err) {
-     console.log("getUserMedia failed!", err);
+     console.log("webkitGetUserMedia failed!", err);
     }
   );
 } else {
-  console.log("No getUserMedia!");
+  console.log("No webkitGetUserMedia!");
 }
+
+function startRecording() {
+  console.log("Recording has started...");
+};
+
+function stopRecording() {
+  console.log("Recording has stoped...");
+};
+
+// Get sound
+var goodMorningSound = new buzz.sound("test/fixtures/good_morning", {formats: ["ogg","mp3"]});
+
+function playGoodMorning() {
+  goodMorningSound
+    .play()
+    .loop();
+};
+
+// Read WAV fixture
+// ps.start();
+// ps.write(localMediaStream);
+// ps.end();
